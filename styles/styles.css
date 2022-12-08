@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  border-radius: 5px;
+}
+
+html {
+  font-size: 14px;
+}
+
 body {
   width: 100%;
   height: 100vh;
@@ -23,7 +36,7 @@ a {
 select {
   background-color: white;
   border: thin solid #DCDCDC;
-  border-radius: 4px;
+  border-radius: 6px;
   display: inline-block;
   font: inherit;
   line-height: 1.5em;
@@ -72,7 +85,7 @@ select.minimal:focus {
 }
 
 .left-side {
-  width: 20%;
+  width: 17%;
   padding-right: 10px;
 }
 
@@ -89,7 +102,7 @@ select.minimal:focus {
 }
 
 .left-top p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #C0262E;
 }
@@ -118,7 +131,7 @@ select.minimal:focus {
 }
 
 .right-side {
-  width: 80%;
+  width: 83%;
 }
 
 .right-top {
@@ -175,15 +188,8 @@ select.minimal:focus {
   background: #FFFFFF;
   box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  width: 75%;
+  width: 77%;
   padding: 10px 25px;
-}
-
-.ads-place {
-  background: #FFFFFF;
-  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  width: 25%;
 }
 
 .body-top {
@@ -200,13 +206,20 @@ select.minimal:focus {
   right: 18px;
   border-left: 1px solid #b5b5b5;
   padding-left: 8px;
+  cursor: pointer;
 }
 
 .body-middle {
+  margin: 22px 0;
   padding: 10px;
   border: 1px solid #DADADA;
   border-radius: 15px;
   display: flex;
+}
+
+.middle-left {
+  padding-right: 15px;
+  border-right: 1px solid #DADADA;
 }
 
 .middle-left h2 {
@@ -223,7 +236,7 @@ select.minimal:focus {
 
 .middle-left p svg {
   margin-right: 12px;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .middle-left p:nth-child(4) * {
@@ -238,3 +251,300 @@ select.minimal:focus {
   color: #DAC400;
 }
 
+.middle-right {
+  padding: 0 20px;
+}
+
+.middle-right p {
+  padding: 10px 0;
+  font-weight: 500;
+  border-bottom: 1px solid #DADADA;
+}
+
+.middle-right > div {
+  padding: 18px 0;
+  display: flex;
+}
+
+.middle-right > div ul {
+  flex: 1;
+}
+
+.middle-right > div ul:first-child {
+  border-right: 1px solid #DADADA;
+}
+
+.middle-right > div ul:last-child {
+  padding-left: 34px;
+}
+
+.middle-right > div ul li {
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+.middle-right > div ul li:first-child {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.body-ads {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  background: #FFECEC;
+  border-radius: 10px;
+  padding-left: 40px;
+  margin-top: 15px;
+}
+
+.right-right {
+  width: 23%;
+}
+
+.news-place {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.one-news {
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.one-news a { 
+  color: #000;
+}
+
+.one-news:hover a {
+  text-decoration: underline;
+}
+
+.news-top {
+  display: flex;
+  align-items: center;
+}
+
+.news-top img {
+  margin-right: 20px;
+}
+
+.news-top h3 {
+  font-size: 1rem;
+}
+
+.one-news p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.message-area {
+  height: 270px;
+  background: #FFFFFF;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+  position: relative;
+}
+
+.message-area img {
+  width: 4rem;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+
+/*================ Doctors styles ==================*/
+
+.doctor-middle {
+  width: 100%;
+  margin: 22px 0;
+  margin-bottom: 40px;
+  padding: 10px;
+  border: 1px solid #DADADA;
+  border-radius: 15px;
+  display: flex;
+}
+
+.doctor-cart {
+  width: 95%;
+  display: flex;
+}
+
+.image-container {
+  width: 280px;
+  height: 150px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.doctor-data {
+  width: 60%;
+  margin-left: 20px;
+  position: relative;
+}
+
+.doctor-data h2 {
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+.doctor-data .skill {
+  color: #6A6A6A;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.doctor-data .experience {
+  margin-top: 10px;
+}
+
+.doctor-data .experience span {
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  padding: 5px 8px;
+  margin-right: 5px;
+}
+
+.doctor-data .experience span:first-child {
+  background: #AAFF9C;
+}
+
+.doctor-data .experience span:last-child {
+  background: #0300A9;
+  color: #fff;
+}
+
+.doctor-data div {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.doctor-data div span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-right: 8px;
+  color: #525252;
+}
+
+.doctor-data .icons {
+  position: absolute;
+  bottom: -35px;
+}
+
+.doctor-data .icons ul {
+  display: flex;
+}
+
+.doctor-data .icons ul li {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.doctor-data .icons ul li:first-child {
+  background: #B3FAFF;
+}
+
+.doctor-data .icons ul li:nth-child(2) {
+  background: #CCE0FF;
+}
+
+.doctor-data .icons ul li:nth-child(3) {
+  background: #FFDEDE;
+}
+
+.doctor-data .icons ul li:last-child {
+  background: #EAD9FF;
+}
+
+.doctor-data .icons ul li a svg {
+  color: #000;
+  font-size: 1.5rem;
+}
+
+.doctor-about {
+  position: relative;
+  margin-top: 20px;
+}
+
+.doctor-about svg {
+  position: absolute;
+  color: #C0262E;
+  font-size: 1.4rem;
+  right: -45px;
+  top: -20px;
+  cursor: pointer;
+}
+
+.doctor-about i.fa-heart {
+  background: #f00;
+}
+
+.doctor-about p {
+  width: 500px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.doctor-about button {
+  position: absolute;
+  border: none;
+  padding: 10px 20px;
+  background: #2C41FF;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  right: -35px;
+  bottom: -30px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 16px;
+  }
+
+  .left-side {
+    width: 15%;
+  }
+
+  .right-side {
+    width: 85%;
+  }
+
+  .right-body {
+    width: 80%;
+  }
+
+  .ads-place {
+    width: 20%;
+  }
+
+  .left-top p {
+    font-size: 2rem;
+  }
+}
