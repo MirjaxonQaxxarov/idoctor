@@ -4,9 +4,134 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="fontawesome-free-6.2.1-web/css/all.min.css" />
+    <script src="fontawesome-free-6.2.1-web/js/all.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Inter:wght@200;300;400;500;600;700&family=Montserrat:wght@400;600&family=Open+Sans:wght@300;400&family=Poppins:ital,wght@0,300;0,400;1,300;1,400&family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
     <title>I-Doctor</title>
   </head>
   <body>
-    <h2>Hello I-doctor</h2>
+    <div class="container">
+      <div class="inner-container">
+        <div class="left-side">
+          <div class="left-top">
+            <img src="images/logo.png" alt="logo" />
+            <p><span>I-</span>DOCTOR</p>
+          </div>
+          <ul>
+            <li class="active"><a href="#">Klinikalar</a></li>
+            <li><a href="#">Shifokorlar</a></li>
+            <li><a href="#">Postlar</a></li>
+            <li><a href="#">Onlayn konsultatsiya</a></li>
+            <li><a href="#">Dori buyurtma qilish</a></li>
+          </ul>
+        </div>
+        <div class="right-side">
+          <div class="right-top">
+            <p>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Qidirish ushun kalit so’zni kiriting..."
+              />
+            </p>
+            <p>
+              <span class="full-name">Tolipov Anvar Sodiqovich</span>
+              <img src="images/user-circle.png" alt="user-logo" />
+              <img src="images/flag.png" alt="flag-icon" />
+            </p>
+          </div>
+          <div class="right-bottom">
+            <div class="right-body">
+              <div class="body-top">
+                <h2>Klinikalar</h2>
+                <p>
+                  <select class="minimal">
+                    <option>-- Tanlang --</option>
+                    <option>Toshkent viloyati</option>
+                    <option>Samarqand viloyati</option>
+                    <option>Farg'ona viloyati</option>
+                    <option>Andijon viloyati</option>
+                    <option>Qashqadaryo viloyati</option>
+                    <option>Jizzax viloyati</option>
+                    <option>Namangan viloyati</option>
+                    <option>Buxoro viloyati</option>
+                    <option>Navoiy viloyati</option>
+                    <option>Surxondaryo viloyati</option>
+                    <option>Sirdayro viloyati</option>
+                    <option>Xorazm viloyati</option>
+                    <option>Qoraqalpog'iston Respublikasi</option>
+                  </select>
+                  <!-- <i class="fa-solid fa-filter"></i> -->
+                  <img src="images/filter.png" alt="filter" />
+                </p>
+              </div>
+              <div class="body-middle">
+                <div class="middle-left">
+                  <img src="images/heart.png" alt="heart" />
+                  <h2>Nur - Shifo</h2>
+                  <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Samarqand. A.Temur 256 uy</span>
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+998(99)0001122">+998 (99) 000 - 11 - 22</a>
+                  </p>
+                  <p>
+                    <i class="fa-brands fa-telegram"></i>
+                    <a href="https://t.me/@NUR-SHIFO">@NUR-SHIFO</a>
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:info@nur-shifo.uz">info@nur-shifo.uz</a>
+                  </p>
+                </div>
+                <div class="middle-right">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Error, saepe. Vero similique cupiditate nihil voluptates
+                    delectus accusantium ab cum ipsum nisi! Harum maxime sunt
+                    explicabo vel alias atque molestias id?
+                  </p>
+                  <div>
+                    <ul>
+                      <li>Mutahasislar</li>
+                      <li>Fizioterapiya</li>
+                      <li>Urologiya</li>
+                      <li>Ginekologiya</li>
+                      <li>Terapiya</li>
+                      <li>Onkolog</li>
+                      <li>Nevropotolog</li>
+                      <li>Okulist</li>
+                      <li>Stomatolog</li>
+                    </ul>
+                    <ul>
+                      <li>Tashxis</li>
+                      <li>Rentgen va Flyurografiya</li>
+                      <li>Densitometriya</li>
+                      <li>UZI</li>
+                      <li>MRT</li>
+                      <li>KT</li>
+                      <li>Endoskopiya</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ads-place"><h2>Reklama uchun joy</h2></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts/scripts.js"></script>
   </body>
 </html>
