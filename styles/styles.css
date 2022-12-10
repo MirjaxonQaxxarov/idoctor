@@ -534,30 +534,13 @@ select.minimal:focus {
   html {
     font-size: 18px;
   }
-}
-
-@media (min-width: 1440px) {
-  html {
-    font-size: 18px;
-  }
 
   .left-side {
-    width: 250px;
+    width: 280px;
   }
 
   .right-side {
-    margin-left: 250px;
-  }
-
-  .right-body {
-    width: 80%;
-  }
-
-  .ads-place {
-    width: 20%;
-  }
-
-  .left-top p {
-    font-size: 1.5rem;
+    margin-left: 280px;
   }
 }
+
