@@ -85,7 +85,8 @@ select.minimal:focus {
 }
 
 .left-side {
-  width: 17%;
+  position: fixed;
+  width: 16%;
   padding-right: 10px;
 }
 
@@ -131,7 +132,8 @@ select.minimal:focus {
 }
 
 .right-side {
-  width: 83%;
+  margin-left: 220px;
+  width: 84%;
 }
 
 .right-top {
@@ -371,13 +373,25 @@ select.minimal:focus {
 }
 
 .doctor-cart {
-  width: 95%;
+  position: relative;
+  width: 100%;
   display: flex;
 }
 
+.doctor-cart > svg {
+  position: absolute;
+  color: #C0262E;
+  font-size: 1.4rem;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
 .image-container {
-  width: 280px;
+  width: 17%;
   height: 150px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .image-container img {
@@ -385,13 +399,13 @@ select.minimal:focus {
 }
 
 .doctor-data {
-  width: 60%;
-  margin-left: 20px;
+  width: 33%;
+  margin-left: 10px;
   position: relative;
 }
 
 .doctor-data h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   white-space: nowrap;
 }
 
@@ -404,13 +418,14 @@ select.minimal:focus {
 
 .doctor-data .experience {
   margin-top: 10px;
+  font-size: 0.9rem;
 }
 
 .doctor-data .experience span {
   font-weight: 700;
   font-size: 0.9rem;
   border-radius: 10px;
-  padding: 5px 8px;
+  padding: 4px 5px;
   margin-right: 5px;
 }
 
@@ -429,6 +444,10 @@ select.minimal:focus {
   align-items: center;
 }
 
+.doctor-data div img {
+  width: 1.3rem;
+}
+
 .doctor-data div span {
   font-size: 0.9rem;
   font-weight: 700;
@@ -438,7 +457,7 @@ select.minimal:focus {
 
 .doctor-data .icons {
   position: absolute;
-  bottom: -35px;
+  bottom: -36px;
 }
 
 .doctor-data .icons ul {
@@ -478,27 +497,15 @@ select.minimal:focus {
 }
 
 .doctor-about {
+  width: 50%;
   position: relative;
   margin-top: 20px;
-}
-
-.doctor-about svg {
-  position: absolute;
-  color: #C0262E;
-  font-size: 1.4rem;
-  right: -45px;
-  top: -20px;
-  cursor: pointer;
-}
-
-.doctor-about i.fa-heart {
-  background: #f00;
+  padding: 0 10px;
 }
 
 .doctor-about p {
-  width: 500px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .doctor-about button {
@@ -510,7 +517,7 @@ select.minimal:focus {
   color: #fff;
   font-size: 1.1rem;
   font-weight: 700;
-  right: -35px;
+  right: 10px;
   bottom: -30px;
   cursor: pointer;
 }
@@ -533,6 +540,7 @@ select.minimal:focus {
   }
 
   .right-side {
+    margin-left: 260px;
     width: 85%;
   }
 
