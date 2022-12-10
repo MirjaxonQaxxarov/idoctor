@@ -201,8 +201,16 @@ select.minimal:focus {
   position: relative;
 }
 
+.body-top h2 {
+  color: #C0262E;
+}
+
+.medicine-top {
+  position: relative;
+}
+
 .body-top img {
-  width: 30px;
+  width: 1.8rem;
   position: absolute;
   top: 12px;
   right: 18px;
@@ -528,6 +536,71 @@ select.minimal:focus {
 
 .show {
   display: block;
+}
+
+/*========================= Posts styles ==========================*/
+
+.post-middle {
+  margin-top: 22px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.post-cart {
+  width: calc(100% / 3);
+  border-radius: 10px;
+  border: 1px solid #EBEBEB;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.post-image-container {
+  height: 12rem;
+  overflow: hidden;
+}
+
+.post-image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.post-about {
+  padding: 10px 10px 10px 15px;
+}
+
+.post-about h4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.post-about p {
+  font-size: 0.9rem;
+  color: #575757;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+
+.post-about p:last-child {
+  margin-top: 20px;
+  text-align: right;
+  font-weight: 600;
+  color: #000;
+}
+
+.post-about p:last-child span {
+  color: #0300A9;
 }
 
 @media (min-width: 1600px) {
