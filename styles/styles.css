@@ -603,6 +603,26 @@ select.minimal:focus {
   color: #0300A9;
 }
 
+/*=========================== Order medicine ===========================*/
+
+.buttons button {
+  color: #fff;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buttons button:first-child {
+  background: #FF3F3F;
+  margin-right: 8px;
+}
+
+.buttons button:last-child {
+  background: #43FF3F;
+}
+
 @media (min-width: 1600px) {
   html {
     font-size: 18px;
