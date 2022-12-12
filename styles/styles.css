@@ -127,8 +127,18 @@ select.minimal:focus {
   color: #C0262E;
 }
 
+.left-side ul li.active a svg {
+  color: #6d6c6c;
+}
+
 .left-side ul li a {
   margin: 0;
+}
+
+.left-side ul li a svg {
+  margin-right: 8px;
+  font-size: 1.4rem;
+  color: #C0262E;
 }
 
 .right-side {
