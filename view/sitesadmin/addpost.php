@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -8,6 +7,7 @@ $keyuser=rand(1000,9999);
 $_SESSION['keyuser']=$keyuser;
 
 ?>
+<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
 <main class="app-content">
     <div class="app-title">
         <div>
@@ -26,63 +26,30 @@ $_SESSION['keyuser']=$keyuser;
                 <h6 style="color: red"  id="error" class="tile-title"></h6>
                 <div class="tile-body">
                     <form id="form">
+
                         <div class="form-group">
-                            <label class="control-label">Ism</label>
-                            <input required class="form-control" name="fullname" type="text" placeholder="">
+                            <label class="control-label">Sarlovha</label>
+                            <input required class="form-control" name="title" type="text" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Qisqacha ma`lumot</label>
+                            <input required class="form-control" name="shortabout" type="text" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Ichki Sarlovha</label>
+                            <input required class="form-control" name="bigtitle" type="text" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Umumiy ma`lumot</label>
+                            <textarea id="editor1" required class="form-control " name="editor1"   placeholder=""></textarea>
                             <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
+                            <input  type="hidden" name="type" value="post">
+                            <input id="about" type="hidden" name="about" value="">
 
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Darajani tanlang</label>
-                            <select name="rankid" id="rankid"   class="form-control">
-                                <option value="0">--Tanlang--</option>
-                                <?php
-                                $fetch=Functions::getall("rank");
-                                foreach ($fetch  as  $value) {
-                                    echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Klinikani tanlang</label>
-                            <select name="rankid" id="clinicid"   class="form-control">
-                                <option value="0">--Tanlang--</option>
-                                <?php
-                                $fetch=Functions::getall("clinic");
-                                foreach ($fetch  as  $value) {
-                                    echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Tajriba</label>
-                            <input required class="form-control" name="experiment" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Haqida</label>
-                            <input required class="form-control" name="about" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Telefon</label>
-                            <input required class="form-control" name="phone" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Telegram</label>
-                            <input required class="form-control" name="telegram" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input required class="form-control" name="email"  type="email" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Manzil</label>
-                            <input required class="form-control" name="location" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
                             <label class="control-label">Rasm</label>
-                            <input  class="form-control" name="doctor" type="file">
+                            <input  class="form-control" name="news" type="file">
                         </div>
                     </form>
                 </div>
@@ -98,13 +65,18 @@ $_SESSION['keyuser']=$keyuser;
 </main>
 
 
+<script src="/locadmin/js/jquery-3.3.1.min.js"></script>
 <script>
+
 
     let submitBtn = document.getElementById('ok1');
     submitBtn.addEventListener("click", function submit(e) {
         e.preventDefault();
+        const editorData =  CKEDITOR.instances.editor1.getData();
+        document.getElementById('editor1').removeAttribute('name');
+        document.getElementById("about").value=editorData;
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('doctor')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('news')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -112,15 +84,20 @@ $_SESSION['keyuser']=$keyuser;
             success: function (data) {
                 console.log(data);
 
-                var obj = jQuery.parseJSON(data);
-                if (obj.xatolik==0) {
-                    document.getElementById('error').innerHTML="Malumotlar saqlandi";
-                    setTimeout(() => {
-                        location.href = "/locadmin/index";
-                    }, 1000);
-                } else {
-                    $('#_csrf').val(obj._csrf);
-                    document.getElementById('error').innerHTML="Nomalum  xatolik!";
+                document.getElementById('editor1').setAttribute('name','editor1');
+                try {
+                    var obj = jQuery.parseJSON(data);
+                    if (obj.xatolik == 0) {
+                        document.getElementById('error').innerHTML = "Ma`lumotlar saqlandi";
+                        setTimeout(() => {
+                            location.href = "/locadmin/post";
+                        }, 1000);
+                    } else {
+                        $('#_csrf').val(obj._csrf);
+                        document.getElementById('error').innerHTML = "Ma`lumotlar saqlanmadi!";
+                    }
+                }catch ( e ){
+                    document.getElementById('error').innerHTML = "Noma`lum  xatolik!";
                 }
             },
             error: function () {
@@ -128,5 +105,10 @@ $_SESSION['keyuser']=$keyuser;
             },
         });
     });
+
+
+
+
+    CKEDITOR.replace( 'editor1' );
 
 </script>

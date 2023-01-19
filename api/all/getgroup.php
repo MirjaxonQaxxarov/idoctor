@@ -1,81 +1,65 @@
-<?php
-//if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-//    header("location: /error");
-//}
-print_r($_SESSION);
-session_start();
+<?
 $ret= [];
-if($_POST['token']!=$_SESSION['_csrfchat'] or $RouteArray['4']!=$_SESSION['for_chat']){
+if($_POST['token']!=$_SESSION['_csrfgroup'] ){
     $ret += ['xatolik' => $RouteArray['4'].' '.$_SESSION['for_chat']];
     $ret += ['xatoli2' => $_POST['token']." ".$_SESSION['_csrfchat']];
     $ret += ['xabar' => "Taqiqlangan so'rov"];
+
+    echo json_encode($ret);
+    exit();
 }
 
-else{
-    $type = str_rot13($RouteArray['5']);
-    if ($type=='in') {
-        header('Content-Type: application/json; charset=utf-8');
-        $table = 'chat';
-        $obj = [];
-        require_once './model/model.php';
-        foreach ($_POST as $key => $value){
-            if ($key != 'token') {
-                $obj += [clean($key) => ($value)];
-            }
-        }
-        $obj += ['who' => 'user'];
-            $fetch = Functions::add($obj,$table);
-        if ($fetch) {
-            $ret += ['xatolik' => "0"];
-            $ret += ['xabar' => "Ma'lumot kiritildi!"];
-            $randchat=rand(100000,999999);
-            $_SESSION['for_chat']=$randchat;
-            $_SESSION['_csrfchat'] = md5(time());
-            $ret += ['token' => $_SESSION['_csrfchat']];
-            $ret += ['chran' => $_SESSION['for_chat']];
-        }
-        else{
-            $ret += ['xatolik' => "1"];
-            $ret += ['xabar' => "Ma'lumotda kamchilik bor!"];
-        }
 
-    }elseif ($type=='out') {
-        header('Content-Type: application/json; charset=utf-8');
-        $table = 'chat';
-        $ip = $_POST['ip'];
-        require_once './model/model.php';
-        $obj='';
-        $no=0;
+?>
 
-        $fetch = Functions::getbytable($table,"ip=:ip ",array("ip"=>$ip));
-        foreach ($fetch as  $value){
-            $no++;
-            if ($value['who']=='user'){
-                $obj.='<div class="messageme">            <p>'.$value['message'].'</p>        </div> ';
-            }else
-                $obj.='<div class="messageother">            <p>'.$value['message'].'</p>        </div> ';
-        }
+    <tr>
+    <th></th>
+    <th>Rasm</th>
+    <th>Preparat nomi</th>
+    <th>Ishlab chiqaruvchi</th>
+    <th>Narxi</th>
+    <th>Qo'llanilishi</th>
+    <th>Retsept</th>
+    <th>Farmakologik xususiyati</th>
+</tr>
 
-        if ($no>0) {
-            $ret += ['xatolik' => "0"];
-            $ret += ['xabar' => "Xabar mavjud!"];
-            $randchat=rand(100000,999999);
-            $_SESSION['for_chat']=$randchat;
-            $_SESSION['_csrfchat'] = md5(time());
-            $ret += ['token' => $_SESSION['_csrfchat']];
-            $ret += ['chran' => $_SESSION['for_chat']];
-            $ret += ['message'=>$obj];
-        }
-        else{
-            $ret += ['xatolik' => "1"];
-            $ret += ['xabar' => "Xabar yuq!"];
-        }
+<?php
+$fid = $_POST['farm'];
+$fetch = Functions::getbytable("medicaments",'farm_group_id=:fid',array('fid'=>$fid));
+$no=0;
+foreach($fetch as $value) {
 
+    $no++;
+    $found = 0;
+    $price='';
+    $fetch1=Functions::getbytable("warehouse_items",'medicament_id=:cl',array("cl"=>$value['id']));
+    foreach ($fetch1 as $value1){
+        $price=$value1['price_out'];
     }
-    else{
-        $ret += ['xatolik' => "2"];
-        $ret += ['xabar' => "Ma'lumot Yetarli emas! "];
+    $farm_group='';
+    $farm_group_id='';
+    $fetch2=Functions::getbyid("farm_group",$value['farm_group_id']);
+    foreach ($fetch2 as $value2){
+        $farm_group=$value2['name'];
+        $farm_group_id=$value2['id'];
     }
+    $purpose='';
+    $fetch3=Functions::getbytable("purpose",'medicaments_id=:cl',array("cl"=>$value['id']));
+    foreach ($fetch3 as $value3){
+        $purpose=$value3['disease'];
+    }
+    echo('
+        <tr>
+                    <td><input type="checkbox" class="product-check" data-index="'.$value['id'].'" data-value="'.$value['id'].'|'.$price.'|'.$value['name'].'"></td>
+
+          <td><img src="/assets/images/logo.png" height="30px" alt=""></td>
+          <td>'.$value['name'].'</td>
+          <td>'.$value['manufacturer_country'].'</td>
+          <td>'.$price.'</td>
+          <td style="color: green;">'.$purpose.'</td>
+          <td style="color: red;">'.$value['form_getaway'].'</td>
+          <td style="color: blue;">'.$farm_group.'</td>
+          
+        </tr>');
 }
-echo json_encode($ret);
 ?>

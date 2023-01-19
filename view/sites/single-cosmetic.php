@@ -23,7 +23,7 @@ $found = 0;
 <div class="right-bottom">
     <div class="right-body">
         <div class="body-top">
-            <h2>Klinikalar</h2>
+            <h2>Kosmetalogiya</h2>
         </div>
 
         <div class="clinic-card">
@@ -155,8 +155,9 @@ $found = 0;
                   <div class="image-container">
                     <img src="/files/images/doctor/'.$value1['doctor'].'" alt="'.$value1['fullname'].'" />
                   </div>
-                  <div class="doctor-data">
-                    <h2>'.$value1['fullname'].'</h2>
+                  <div class="doctor-data">                    
+                  <h2><a href="/single-doctor/'.clean($value1['fullname']).'/'.$keyuser.$value1['id'].$keyuser.'">'.$value1['fullname'].'</a></h2>
+
                     <p class="skill">'.$rank.'</p>
                     <p class="experience">
                       <span>'.$clinic.'</span

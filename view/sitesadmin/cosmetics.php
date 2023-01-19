@@ -2,11 +2,11 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Klinikalar</h1>
+            <h1><i class="fa fa-th-list"></i> Kosmetalogiyalar</h1>
             <h1></h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><a href="/locadmin/addclinic/"><i class="fa fa-plus"></i> Yangi Klinikalar kiritish</a></li>
+            <li class="breadcrumb-item"><a href="/locadmin/addclinic/"><i class="fa fa-plus"></i> Yangi Kosmetalogiyalar kiritish</a></li>
         </ul>
     </div>
     <div class="row">
@@ -30,7 +30,7 @@
                             <tbody>
 
                     <?php
-                    $fetch = Functions::getall("clinic");
+                    $fetch = Functions::getbytable("clinic",'type=:cl',array("cl"=>"cosmetic"));
                     $no=0;
                     foreach($fetch as $value) {
 

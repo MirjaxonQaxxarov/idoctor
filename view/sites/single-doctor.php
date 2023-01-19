@@ -8,11 +8,21 @@ $id=(int)(strrev($pid));
     exit();
 }
 
-$fetch = Functions::getbyid("clinic",$id);
+$fetch = Functions::getbyid("doctor",$id);
 $nom=0;
 foreach($fetch as $value) {
 $nom++;
 $found = 0;
+    $rank="";
+    $fetch1=Functions::getbyid("rank",$value['rankid']);
+    foreach ($fetch1 as $value1){
+        $rank=$value1['name'];
+    }
+    $clinic="";
+    $fetch2=Functions::getbyid("clinic",$value['clinicid']);
+    foreach ($fetch2 as $value2){
+        $clinic=$value2['name'];
+    }
 
 
 
@@ -23,7 +33,7 @@ $found = 0;
 <div class="right-bottom">
     <div class="right-body">
         <div class="body-top">
-            <h2>Kosmetalogiya</h2>
+            <h2>Doctor</h2>
         </div>
 
         <div class="clinic-card">
@@ -31,12 +41,12 @@ $found = 0;
                 <div class="middle-left">
                     <div class="image-container">
                         <?
-                            $imgurl='/files/images/image/'.$value['image'];
-                            if (!isset($imgurl) or strlen($value['image'])<1){
+                            $imgurl='/files/images/doctor/'.$value['doctor'];
+                            if (!isset($imgurl) or strlen($value['doctor'])<1){
                                 $imgurl='/assets/images/logo.png';
                             }
                         ?>
-                        <img src="<?=$imgurl?>" alt="<?=$value['name']?>">
+                        <img src="<?=$imgurl?>" alt="<?=$value['fullname']?>">
                     </div>
                     <div class="icons">
                         <div>
@@ -54,12 +64,13 @@ $found = 0;
                 <div class="middle-right" style="display: flex;">
                     <div class="short-info">
                         <div class="cart-title">
-                            <h2><a href="#"><?=$value['name']?></a></h2>
-                            <p><?=$value['direction']?></p>
+                            <h2><a href="#"><?=$value['fullname']?></a></h2>
+                            <p><?=$rank?></p>
+                            <p>Tajriba: <?=$value['experiment']?> yil</p>
 
                         </div>
                         <div class="cart-btns">
-                            <button>Qabul <?=$value['price']?> so`mdan</button>
+                            <button> <?=$clinic?> </button>
                         </div>
                     </div>
 
@@ -69,7 +80,7 @@ $found = 0;
                                 <svg class="svg-inline--fa fa-location-dot" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
                                     <path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"></path>
                                 </svg><!-- <i class="fa-solid fa-location-dot"></i> Font Awesome fontawesome.com -->
-                                <a href="#"><?=$value['address']?></a>
+                                <a href="#"><?=$value['location']?></a>
                             </div>
                             <div>
                                 <svg class="svg-inline--fa fa-phone" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -101,7 +112,6 @@ $found = 0;
                     <ul>
                         <li data-active="#description" class="tablink-active">Batafsil</li>
                         <li data-active="#price-table">Narxlar</li>
-                        <li data-active="#doctors">Shifokorlar</li>
                         <li data-active="#comments">Fikrlar</li>
                     </ul>
                 </div>
@@ -128,83 +138,6 @@ $found = 0;
                                     <td>6000</td>
                                 </tr>
                             </table>
-                        </div>
-                    </div>
-                    <div id="doctors" class="tab-block">
-                        <h3>Korxona shifokorlari</h3>
-                        <div class="cont">
-                            <?php
-                            $fetch = Functions::getbytable("doctor","clinicid=:clinic",array('clinic'=>$value['id']));
-                            $no=0;
-                            foreach($fetch as $value1) {
-
-                                $no++;
-                                $found = 0;
-                                $rank="";
-                                $fetch1=Functions::getbyid("rank",$value1['rankid']);
-                                foreach ($fetch1 as $value11){
-                                    $rank=$value11['name'];
-                                }
-                                $clinic=$value['name'];
-
-                                echo('
-              <div class="doctor-middle">
-                <div class="doctor-cart">
-                  <i class="fa-regular fa-heart empty-heart"></i>
-                  <i class="fa-solid fa-heart full-heart hidden"></i>
-                  <div class="image-container">
-                    <img src="/files/images/doctor/'.$value1['doctor'].'" alt="'.$value1['fullname'].'" />
-                  </div>
-                  <div class="doctor-data">
-                    <h2>'.$value1['fullname'].'</h2>
-                    <p class="skill">'.$rank.'</p>
-                    <p class="experience">
-                      <span>'.$clinic.'</span
-                      ><span>Tajribasi - '.$value1['experiment'].' yil</span>
-                    </p>
-                    <div>
-                      <span>Reyting: </span>
-                      <img src="/assets/images/star.png" alt="star" />
-                      <img src="/assets/images/star.png" alt="star" />
-                      <img src="/assets/images/star.png" alt="star" />
-                      <img src="/assets/images/star.png" alt="star" />
-                      <img src="/assets/images/half-star.png" alt="half star" />
-                    </div>
-                    <div class="icons">
-                      <ul>
-                        <li>
-                          <a href="tel:'.$value1['phone'].'"
-                            ><i class="fa-solid fa-phone"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="https://t.me/@'.$value1['telegram'].'"
-                            ><i class="fa-brands fa-telegram"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="mailto:'.$value1['email'].'"
-                            ><i class="fa-solid fa-envelope"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#"
-                            ><i class="fa-solid fa-location-dot"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="doctor-about">
-                    <p>
-                      '.$value1['about'].'
-                    </p>
-                    <button>Qabulga yozilish</button>
-                  </div>
-                </div>
-              </div>');
-                            }
-                            ?>
                         </div>
                     </div>
                     <div id="comments" class="tab-block">

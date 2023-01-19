@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -31,17 +30,17 @@ $_SESSION['keyuser']=$keyuser;
 
                             <form id="form">
                         <div class="form-group">
-                            <label class="control-label">Nomi</label>
-                            <input required class="form-control" name="name" type="text" placeholder="">
+                            <label class="control-label">Kasallik Nomi</label>
+                            <input required class="form-control" name="disease" type="text" placeholder="">
                             <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
 
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Guruhini tanlang</label>
-                            <select name="farm_group_id" id="farm_group_id"   class="form-control">
+                            <label class="control-label">Dorini tanlang</label>
+                            <select name="medicaments_id" id="medicaments_id"   class="form-control">
                                 <option value="0">--Tanlang--</option>
                                 <?php
-                                $fetch=Functions::getall("farm_group");
+                                $fetch=Functions::getall("medicaments");
                                 foreach ($fetch  as  $value) {
                                     echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
                                 }
@@ -49,32 +48,15 @@ $_SESSION['keyuser']=$keyuser;
                             </select>
                         </div>
                                 <div class="form-group">
-                                    <label class="control-label">Nojuya tasiri</label>
+                                    <label class="control-label">Alomati</label>
+                                    <input required class="form-control" name="symptom" type="text"  placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Tartibi</label>
                                     <textarea id="editoruz" required class="form-control " name="editoruz"   placeholder=""></textarea>
-                                    <input id="aboutuz" type="hidden" name="contraindication" value="">
+                                    <input id="aboutuz" type="hidden" name="procedur" value="">
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="control-label">Qo'llanma</label>
-                                    <textarea id="editorru" required class="form-control " name="editorru"   placeholder=""></textarea>
-                                    <input id="aboutru" type="hidden" name="instruction" value="">
-                                </div>
-                        <div class="form-group">
-                            <label class="control-label">Retsept bilan</label>
-                            <input required class="form-control" name="form_getaway" type="text"  placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Ishlab chiqaruvchi</label>
-                            <input required class="form-control" name="manufacturer" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Ishlab chiqaruvchi mamlakat</label>
-                            <input required class="form-control" name="manufacturer_country"  type="email" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Rasm</label>
-                            <input  class="form-control" name="medicaments" type="file">
-                        </div>
                     </form>
                 </div>
                 <div class="tile-footer">
@@ -100,11 +82,8 @@ $_SESSION['keyuser']=$keyuser;
         const editorData =  CKEDITOR.instances.editoruz.getData();
         document.getElementById('editoruz').removeAttribute('name');
         document.getElementById("aboutuz").value=editorData;
-        const editorDataru =  CKEDITOR.instances.editorru.getData();
-        document.getElementById('editorru').removeAttribute('name');
-        document.getElementById("aboutru").value=editorDataru;
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('medicaments')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('purpose')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -136,7 +115,6 @@ $_SESSION['keyuser']=$keyuser;
 
 
 
-    CKEDITOR.replace( 'editorru' );
     CKEDITOR.replace( 'editoruz' );
 
 </script>

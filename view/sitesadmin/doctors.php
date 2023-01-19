@@ -44,7 +44,7 @@
                             $rank=$value1['name'];
                         }
                         $clinic="";
-                        $fetch2=Functions::getbyid("clinic",$value['rankid']);
+                        $fetch2=Functions::getbyid("clinic",$value['clinicid']);
                         foreach ($fetch2 as $value2){
                             $clinic=$value2['name'];
                         }
@@ -60,7 +60,7 @@
                                 <td>' . $value['telegram'] . '</td>
                                 <td>' . $value['email'] . '</td>
                                 <td>' . $value['location'] . '</td>
-                                <td><img src="/files/images/doctor/' . $value['image'] . '" alt="' . $value['fullname'] . '" width="100px"></td>
+                                <td><img src="/files/images/doctor/' . $value['doctor'] . '" alt="' . $value['fullname'] . '" width="100px"></td>
                             </tr>');
                         }
                     ?>

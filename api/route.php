@@ -2,7 +2,7 @@
 
 $routes = [
     "" => [
-        "url" => "mainpage.php",
+        "url" => "../../404.php",
         "type" => "hide",
         "title" => "Salom Dunyo",
         "params" => [
@@ -11,19 +11,9 @@ $routes = [
             "mtitle" => "Klinikalar"
         ]
     ],
-    "main" => [
-        "url" => "mainpage.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-house",
-            "mtitle" => "Bosh sahifa"
-        ]
-    ],
-    "index" => [
-        "url" => "index.php",
-        "type" => "show",
+    "getchat" => [
+        "url" => "chat.php",
+        "type" => "hide",
         "title" => "Salom Dunyo",
         "params" => [
             "method" => "delete",
@@ -31,125 +21,34 @@ $routes = [
             "mtitle" => "Klinikalar"
         ]
     ],
-    "single-clinic" => [
-        "url" => "single-clinic.php",
+    "group" => [
+        "url" => "getgroup.php",
         "type" => "hide",
         "title" => "Salom Dunyo",
         "params" => [
             "method" => "delete",
-            "class" => "fa-solid fa-phone-volume",
-            "mtitle" => "Klinika"
+            "class" => "fa-solid fa-hospital",
+            "mtitle" => "Klinikalar"
         ]
     ],
-    "doctors" => [
-        "url" => "doctors.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-user-doctor",
-            "mtitle" => "Shifokorlar"
-        ]
-    ],
-    "single-doctor" => [
-        "url" => "single-doctor.php",
+    "forclient" => [
+        "url" => "forclient.php",
         "type" => "hide",
         "title" => "Salom Dunyo",
         "params" => [
             "method" => "delete",
-            "class" => "fa-solid fa-phone-volume",
-            "mtitle" => "Shifokor"
+            "class" => "fa-solid fa-hospital",
+            "mtitle" => "Klinikalar"
         ]
     ],
-    "delivery" =>  [
-        "url" => "delivery.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-truck-medical",
-            "mtitle" => "Dori yetkazib berish"
-        ]
-    ],
-    "online-consult" =>  [
-        "url" => "online-consult.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-comment",
-            "mtitle" => "Onlayn konsultatsiya"
-        ]
-    ],
-
-    "cosmetics" => [
-        "url" => "cosmetics.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-capsules",
-            "mtitle" => "Kosmetalogiya"
-        ]
-    ],
-    "single-cosmetic" => [
-        "url" => "single-cosmetic.php",
+    "zayavka" => [
+        "url" => "zayavka.php",
         "type" => "hide",
         "title" => "Salom Dunyo",
         "params" => [
             "method" => "delete",
-            "class" => "fa-solid fa-phone-volume",
-            "mtitle" => "Kosmetalogiya"
-        ]
-    ],
-    "vacancy" =>  [
-        "url" => "vacancy.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-list-check",
-            "mtitle" => "Vakansiyalar"
-        ]
-    ],
-    "about" => [
-        "url" => "about.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-address-card",
-            "mtitle" => "Biz haqimizda"
-        ]
-    ],
-    // "contact" => [
-    //     "url" => "contact.php",
-    //     "type" => "show",
-    //     "title" => "Salom Dunyo",
-    //     "params" => [
-    //         "method" => "delete",
-    //         "class" => "fa-solid fa-phone-volume",
-    //         "mtitle" => "Aloqa"
-    //     ]
-    // ],
-    "cooperation" => [
-        "url" => "cooperation.php",
-        "type" => "show",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "fa-solid fa-handshake",
-            "mtitle" => "Hamkorlik"
-        ]
-    ],
-    "error" =>  [
-        "url" => "404.php",
-        "type" => "hide",
-        "title" => "Salom Dunyo",
-        "params" => [
-            "method" => "delete",
-            "class" => "",
-            "mtitle" => " Error"
+            "class" => "fa-solid fa-hospital",
+            "mtitle" => "Klinikalar"
         ]
     ],
 ];

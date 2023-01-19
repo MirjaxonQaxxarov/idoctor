@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -29,150 +28,59 @@ $_SESSION['keyuser']=$keyuser;
                 <h6 style="color: red"  id="error" class="tile-title"></h6>
                 <div class="tile-body">
 
-                    <div class="row">
-                        <div class="col-6" style="border:1px solid silver ">
-                            <form id="form_uz">
-                                <div class="row ml-1">
-                                    <h4>
-                                        O`zbekcha
-                                    </h4>
-                                </div>
+                            <form id="form">
                         <div class="form-group">
-                            <label class="control-label">Ism</label>
-                            <input required class="form-control" name="fullname" type="text" placeholder="">
+                            <label class="control-label">Nomi</label>
+                            <input required class="form-control" name="name" type="text" placeholder="">
                             <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
-                            <input  type="hidden" name="un_id" value="<?=$un_id?>" id="un_id">
 
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Darajani tanlang</label>
-                            <select name="rankid" id="rankid"   class="form-control">
+                            <label class="control-label">Guruhini tanlang</label>
+                            <select name="farm_group_id" id="farm_group_id"   class="form-control">
                                 <option value="0">--Tanlang--</option>
                                 <?php
-                                $fetch=Functions::getall("rank");
+                                $fetch=Functions::getall("farm_group");
                                 foreach ($fetch  as  $value) {
                                     echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
                                 }
                                 ?>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Klinikani tanlang</label>
-                            <select name="clinicid" id="clinicid"   class="form-control">
-                                <option value="0">--Tanlang--</option>
-                                <?php
-                                $fetch=Functions::getall("clinic");
-                                foreach ($fetch  as  $value) {
-                                    echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Tajriba</label>
-                            <input required class="form-control" name="experiment" type="text" placeholder="">
                         </div>
                                 <div class="form-group">
-                                    <label class="control-label">Umumiy ma`lumot</label>
+                                    <label class="control-label">Nojuya tasiri</label>
                                     <textarea id="editoruz" required class="form-control " name="editoruz"   placeholder=""></textarea>
-                                    <input id="aboutuz" type="hidden" name="about" value="">
+                                    <input id="aboutuz" type="hidden" name="contraindication" value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Qo'llanma</label>
+                                    <textarea id="editorru" required class="form-control " name="editorru"   placeholder=""></textarea>
+                                    <input id="aboutru" type="hidden" name="instruction" value="">
                                 </div>
                         <div class="form-group">
-                            <label class="control-label">Telefon</label>
-                            <input required class="form-control" name="phone" type="text" placeholder="">
+                            <label class="control-label">Retsept</label>
+                            <select name="form_getaway" id="form_getaway"   class="form-control">
+                                <option value="Talab etiladi">Talab etiladi</option>
+                                <option value="Talab etilmaydi">Talab etilmaydi</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Telegram</label>
-                            <input required class="form-control" name="telegram" type="text" placeholder="">
+                            <label class="control-label">Ishlab chiqaruvchi</label>
+                            <input required class="form-control" name="manufacturer" type="text" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input required class="form-control" name="email"  type="email" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Manzil</label>
-                            <input required class="form-control" name="location" type="text" placeholder="">
+                            <label class="control-label">Ishlab chiqaruvchi mamlakat</label>
+                            <input required class="form-control" name="manufacturer_country"  type="email" placeholder="">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Rasm</label>
-                            <input  class="form-control" name="doctor" type="file">
+                            <input  class="form-control" name="medicaments" type="file">
                         </div>
                     </form>
-                        </div>
-                        <div class="col-6" style="border:1px solid silver ">
-                            <form id="form_ru">
-                                <div class="row ml-1">
-                                    <h4>
-                                        Ruscha
-                                    </h4>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Ism</label>
-                                    <input required class="form-control" name="fullname" type="text" placeholder="">
-                                    <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
-                                    <input  type="hidden" name="un_id" value="<?=$un_id?>" id="un_id">
-
-
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Darajani tanlang</label>
-                                    <select name="rankid" id="rankid"   class="form-control">
-                                        <option value="0">--Tanlang--</option>
-                                        <?php
-                                        $fetch=Functions::getall("rank");
-                                        foreach ($fetch  as  $value) {
-                                            echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Klinikani tanlang</label>
-                                    <select name="clinicid" id="clinicid"   class="form-control">
-                                        <option value="0">--Tanlang--</option>
-                                        <?php
-                                        $fetch=Functions::getall("clinic");
-                                        foreach ($fetch  as  $value) {
-                                            echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Tajriba</label>
-                                    <input required class="form-control" name="experiment" type="text" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Umumiy ma`lumot</label>
-                                    <textarea id="editorru" required class="form-control " name="editorru"   placeholder=""></textarea>
-                                    <input id="aboutru" type="hidden" name="about" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Telefon</label>
-                                    <input required class="form-control" name="phone" type="text" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Telegram</label>
-                                    <input required class="form-control" name="telegram" type="text" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Email</label>
-                                    <input required class="form-control" name="email"  type="email" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Manzil</label>
-                                    <input required class="form-control" name="location" type="text" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Rasm</label>
-                                    <input  class="form-control" name="doctor" type="file">
-                                </div>
-
-                                <div class="form-group">
-                                    <button id="okru"  class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Saqlash</button>&nbsp;&nbsp
-                                </div>
-                            </form>
-                        </div>
+                </div>
+                <div class="tile-footer">
+                    <button id="okru" class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Saqlash</button>&nbsp;&nbsp
                 </div>
             </div>
         </div>
@@ -181,7 +89,6 @@ $_SESSION['keyuser']=$keyuser;
 
     </div>
 </main>
-
 
 
 <script src="/locadmin/js/jquery-3.3.1.min.js"></script>
@@ -195,15 +102,15 @@ $_SESSION['keyuser']=$keyuser;
         const editorData =  CKEDITOR.instances.editoruz.getData();
         document.getElementById('editoruz').removeAttribute('name');
         document.getElementById("aboutuz").value=editorData;
-        const editorDataru =  CKEDITOR.instances.editoruz.getData();
+        const editorDataru =  CKEDITOR.instances.editorru.getData();
         document.getElementById('editorru').removeAttribute('name');
         document.getElementById("aboutru").value=editorDataru;
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('doctor')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('medicaments')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
-            data: new FormData($("#form_uz")[0]),
+            data: new FormData($("#form")[0]),
             success: function (data) {
                 console.log(data);
 
@@ -213,35 +120,7 @@ $_SESSION['keyuser']=$keyuser;
                     if (obj.xatolik == 0) {
                         document.getElementById('error').innerHTML = "Ma`lumotlar saqlandi";
                         setTimeout(() => {
-                            document.getElementById("form_uz").reset();
-                        }, 1000);
-                    } else {
-                        document.getElementById('error').innerHTML = "Ma`lumotlar saqlanmadi!";
-                    }
-                }catch ( e ){
-                    document.getElementById('error').innerHTML = "Noma`lum  xatolik!";
-                }
-            },
-            error: function () {
-                document.getElementById('error').innerHTML="Aloqa uzilib qoldi!";
-            },
-        });
-        $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('doctor_ru')?>/",
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: new FormData($("#form_ru")[0]),
-            success: function (data) {
-                console.log(data);
-
-                document.getElementById('editorru').setAttribute('name','editorru');
-                try {
-                    var obj = jQuery.parseJSON(data);
-                    if (obj.xatolik == 0) {
-                        document.getElementById('error').innerHTML = "Ma`lumotlar saqlandi";
-                        setTimeout(() => {
-                            document.getElementById("form_ru").reset();
+                            document.getElementById("form").reset();
                         }, 1000);
                     } else {
                         document.getElementById('error').innerHTML = "Ma`lumotlar saqlanmadi!";

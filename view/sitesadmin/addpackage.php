@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -28,7 +27,7 @@ $_SESSION['keyuser']=$keyuser;
                     <form id="form">
                         <div class="form-group">
                             <label class="control-label">Nomi</label>
-                            <input required class="form-control" name="name" type="text" placeholder="">
+                            <input required class="form-control" name="package_type" type="text" placeholder="">
                             <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
 
                         </div>
@@ -52,7 +51,7 @@ $_SESSION['keyuser']=$keyuser;
     submitBtn.addEventListener("click", function submit(e) {
         e.preventDefault();
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('rank')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('package')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -64,7 +63,7 @@ $_SESSION['keyuser']=$keyuser;
                 if (obj.xatolik==0) {
                     document.getElementById('error').innerHTML="Malumotlar saqlandi";
                     setTimeout(() => {
-                        location.href = "/locadmin/rank";
+                        location.href = "/locadmin/package";
                     }, 1000);
                 } else {
                     $('#_csrf').val(obj._csrf);

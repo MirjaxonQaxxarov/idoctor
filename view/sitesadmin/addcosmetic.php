@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $_SESSION['_csrfadd'] = md5(time());
 
@@ -41,7 +40,7 @@ $_SESSION['keyuser']=$keyuser;
                                         <input required class="form-control" name="name" type="text" placeholder="">
                                         <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
                                         <input  type="hidden" name="un_id" value="<?=$un_id?>" id="un_id">
-                                        <input  type="hidden" name="type" value="clinic">
+                                        <input  type="hidden" name="type" value="cosmetic">
 
                                     </div>
 
@@ -96,7 +95,7 @@ $_SESSION['keyuser']=$keyuser;
                                         <input required class="form-control" name="name" type="text" placeholder="">
                                         <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
                                         <input  type="hidden" name="un_id" value="<?=$un_id?>" id="un_id">
-                                        <input  type="hidden" name="type" value="clinic">
+                                        <input  type="hidden" name="type" value="cosmetic">
 
                                     </div>
 
@@ -164,7 +163,7 @@ $_SESSION['keyuser']=$keyuser;
         const editorData =  CKEDITOR.instances.editoruz.getData();
         document.getElementById('editoruz').removeAttribute('name');
         document.getElementById("aboutuz").value=editorData;
-        const editorDataru =  CKEDITOR.instances.editoruz.getData();
+        const editorDataru =  CKEDITOR.instances.editorru.getData();
         document.getElementById('editorru').removeAttribute('name');
         document.getElementById("aboutru").value=editorDataru;
         $.ajax({

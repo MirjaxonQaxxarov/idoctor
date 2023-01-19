@@ -2,11 +2,11 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Guruh</h1>
+            <h1><i class="fa fa-th-list"></i> Qo`llanilish</h1>
             <h1></h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><a href="/locadmin/addfarm_group/"><i class="fa fa-plus"></i> Yangi Guruh kiritish</a></li>
+            <li class="breadcrumb-item"><a href="/locadmin/addpurpose/"><i class="fa fa-plus"></i> Yangi Qo`llanilish kiritish</a></li>
         </ul>
     </div>
     <div class="row">
@@ -17,25 +17,33 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
+                                <th>Kasallik</th>
+                                <th>Alomatlari</th>
+                                <th>Dori</th>
+                                <th>Protsedura</th>
                             </tr>
                             </thead>
                             <tbody>
 
                     <?php
-                    $fetch = Functions::getall("farm_group");
+                    $fetch = Functions::getall("purpose");
                     $no=0;
                     foreach($fetch as $value) {
 
                         $no++;
                         $found = 0;
-                        $rank="";
+                        $medicaments="";
+                        $fetch2=Functions::getbyid("medicaments",$value['medicaments_id']);
+                        foreach ($fetch2 as $value2){
+                            $medicaments=$value2['name'];
+                        }
 
                         echo('
                             <tr>
-                                <td>' . $value['id'] . '</td>
-                                <td>' . $value['name'] . '</td>
+                                <td>' . $value['disease'] . '</td>
+                                <td>' . $value['symptom'] . '</td>
+                                <td>' . $medicaments . '</td>
+                                <td>' . $value['procedur'] . '</td>
                             </tr>');
                         }
                     ?>

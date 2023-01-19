@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -32,42 +31,6 @@ $_SESSION['keyuser']=$keyuser;
                             <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
 
                         </div>
-                        <div class="form-group">
-                            <label class="control-label">Rus Nomi</label>
-                            <input required class="form-control" name="nameru" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Yo`nalish</label>
-                            <input required class="form-control" name="direction" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Boshlang`ich narx</label>
-                            <input required class="form-control" name="price" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Chegirma</label>
-                            <input required class="form-control" name="sale" value="0" type="number" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Manzil</label>
-                            <input required class="form-control" name="address" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Telefon</label>
-                            <input required class="form-control" name="phone" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Telegram</label>
-                            <input required class="form-control" name="telegram" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input required class="form-control" type="email" name="email" placeholder="Enter email address">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Rasm</label>
-                            <input  class="form-control" name="image" type="file">
-                        </div>
                     </form>
                 </div>
                 <div class="tile-footer">
@@ -88,7 +51,7 @@ $_SESSION['keyuser']=$keyuser;
     submitBtn.addEventListener("click", function submit(e) {
         e.preventDefault();
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('clinic')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('rank')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -100,7 +63,7 @@ $_SESSION['keyuser']=$keyuser;
                 if (obj.xatolik==0) {
                     document.getElementById('error').innerHTML="Malumotlar saqlandi";
                     setTimeout(() => {
-                        location.href = "/locadmin/index";
+                        location.href = "/locadmin/rank";
                     }, 1000);
                 } else {
                     $('#_csrf').val(obj._csrf);

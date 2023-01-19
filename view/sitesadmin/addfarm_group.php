@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -25,7 +24,7 @@ $_SESSION['keyuser']=$keyuser;
                 <h3 class="tile-title"><? if (isset($routes[$RouteArray['2']]["params"]["mtitle"])) echo $routes[$RouteArray['2']]["params"]["mtitle"]; else echo "Error";?></h3>
                 <h6 style="color: red"  id="error" class="tile-title"></h6>
                 <div class="tile-body">
-                    <form id="form">
+                    <form id="form" autocomplete="off">
                         <div class="form-group">
                             <label class="control-label">Nomi</label>
                             <input required class="form-control" name="name" type="text" placeholder="">
@@ -46,13 +45,15 @@ $_SESSION['keyuser']=$keyuser;
 </main>
 
 
+<script src="/locadmin/js/jquery-3.3.1.min.js"></script>
+
 <script>
 
     let submitBtn = document.getElementById('ok1');
     submitBtn.addEventListener("click", function submit(e) {
         e.preventDefault();
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('rank')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('farm_group')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -64,7 +65,7 @@ $_SESSION['keyuser']=$keyuser;
                 if (obj.xatolik==0) {
                     document.getElementById('error').innerHTML="Malumotlar saqlandi";
                     setTimeout(() => {
-                        location.href = "/locadmin/rank";
+                        location.href = "/locadmin/farm_group";
                     }, 1000);
                 } else {
                     $('#_csrf').val(obj._csrf);

@@ -1,7 +1,6 @@
 <?php
 require_once './model/model.php';
-require_once './view/route.php';
-require_once './view/sites/menu/head.php';
+require_once './api/route.php';
 
 
 if (!isset($_SESSION['keyuser'])){
@@ -20,26 +19,29 @@ if (Check::Route($RouteArray[2])) {
         $routeinfos = Check::GetRoute($RouteArray[2]);
         $geturl   = $routeinfos["url"];
         if (!isset($routeinfos["errors"])){
-            if (!file_exists("./view/sites/".$geturl)){
+            if (!file_exists("./api/all/".$geturl)){
                 echo "<script>console.log('File does not found!')</script>";
                 throw new Exception ('File does not exist');
             }
             else {
-                $miniurl="./view/sites/".$geturl;
+
+                $miniurl="./api/all/".$geturl;
                 require_once ($miniurl);
             }
-        }else
-            require_once "./view/sites/404.php";
+        }else{
+            header("location:/view/sites/404.php");
+            exit();
+        }
     }
     catch (Exception $e) {
-//        require_once "./view/sites/404.php";
+//        header(location:/view/sites/404.php");
+            exit();
     }
 }
 else{
-    require_once "./view/sites/404.php";
+    header("location:/view/sites/404.php");
+    exit();
 }
 
-
-require_once './view/sites/menu/footer.php';
 
 ?>

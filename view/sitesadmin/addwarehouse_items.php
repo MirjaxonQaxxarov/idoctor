@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['_csrfadd'] = md5(time());
 
 
@@ -30,50 +29,42 @@ $_SESSION['keyuser']=$keyuser;
                 <div class="tile-body">
 
                             <form id="form">
-                        <div class="form-group">
-                            <label class="control-label">Nomi</label>
-                            <input required class="form-control" name="name" type="text" placeholder="">
-                            <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
-
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Guruhini tanlang</label>
-                            <select name="farm_group_id" id="farm_group_id"   class="form-control">
-                                <option value="0">--Tanlang--</option>
-                                <?php
-                                $fetch=Functions::getall("farm_group");
-                                foreach ($fetch  as  $value) {
-                                    echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
                                 <div class="form-group">
-                                    <label class="control-label">Nojuya tasiri</label>
-                                    <textarea id="editoruz" required class="form-control " name="editoruz"   placeholder=""></textarea>
-                                    <input id="aboutuz" type="hidden" name="contraindication" value="">
+                                    <label class="control-label">Dorini tanlang</label>
+                                    <select name="medicament_id" id="medicament_id"   class="form-control">
+                                        <option value="0">--Tanlang--</option>
+                                        <?php
+                                        $fetch=Functions::getall("medicaments");
+                                        foreach ($fetch  as  $value) {
+                                            echo"<option value=\"".$value['id']."\">".$value['name']."</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-
                                 <div class="form-group">
-                                    <label class="control-label">Qo'llanma</label>
-                                    <textarea id="editorru" required class="form-control " name="editorru"   placeholder=""></textarea>
-                                    <input id="aboutru" type="hidden" name="instruction" value="">
+                                    <label class="control-label">Packageni tanlang</label>
+                                    <input  type="hidden" name="_csrf" value="<?=$_SESSION['_csrfadd']?>" id="_csrf">
+                                    <select name="package_id" id="package_id"   class="form-control">
+                                        <option value="0">--Tanlang--</option>
+                                        <?php
+                                        $fetch=Functions::getall("package");
+                                        foreach ($fetch  as  $value) {
+                                            echo"<option value=\"".$value['id']."\">".$value['package_type']."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Olingan narx</label>
+                                    <input required class="form-control" name="price_in" type="number"  placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Sotish narx</label>
+                                    <input required class="form-control" name="price_out" type="number"  placeholder="">
                                 </div>
                         <div class="form-group">
-                            <label class="control-label">Retsept bilan</label>
-                            <input required class="form-control" name="form_getaway" type="text"  placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Ishlab chiqaruvchi</label>
-                            <input required class="form-control" name="manufacturer" type="text" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Ishlab chiqaruvchi mamlakat</label>
-                            <input required class="form-control" name="manufacturer_country"  type="email" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Rasm</label>
-                            <input  class="form-control" name="medicaments" type="file">
+                            <label class="control-label">Soni</label>
+                            <input required class="form-control" name="count" type="number" placeholder="">
                         </div>
                     </form>
                 </div>
@@ -97,14 +88,8 @@ $_SESSION['keyuser']=$keyuser;
     let submitBtn = document.getElementById('okru');
     submitBtn.addEventListener("click", function submit(e) {
         e.preventDefault();
-        const editorData =  CKEDITOR.instances.editoruz.getData();
-        document.getElementById('editoruz').removeAttribute('name');
-        document.getElementById("aboutuz").value=editorData;
-        const editorDataru =  CKEDITOR.instances.editorru.getData();
-        document.getElementById('editorru').removeAttribute('name');
-        document.getElementById("aboutru").value=editorDataru;
         $.ajax({
-            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('medicaments')?>/",
+            url: "/locadmin/add/password=<?=str_rot13("Rememberme")?>&token=<?=str_rot13("kvjdfvdfkj@dsd.fd")?><?=4*$keyuser?>/<?=str_rot13('warehouse_items')?>/",
             type: 'POST',
             processData: false,
             contentType: false,
@@ -112,7 +97,7 @@ $_SESSION['keyuser']=$keyuser;
             success: function (data) {
                 console.log(data);
 
-                document.getElementById('editoruz').setAttribute('name','editoruz');
+                // document.getElementById('editoruz').setAttribute('name','editoruz');
                 try {
                     var obj = jQuery.parseJSON(data);
                     if (obj.xatolik == 0) {
@@ -135,8 +120,5 @@ $_SESSION['keyuser']=$keyuser;
 
 
 
-
-    CKEDITOR.replace( 'editorru' );
-    CKEDITOR.replace( 'editoruz' );
 
 </script>

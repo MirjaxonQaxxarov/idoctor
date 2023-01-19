@@ -5,42 +5,7 @@
 
         </div>
         <main>
-            <div class="h-card h-filter">
-                <h3>Kerakli xizmatni oson va tezlik bilan toping</h3>
-                <div class="filter-body">
-                    <form action="#" method="POST">
-                        <div class="form-section">
-                            <h4>Umumiy ma'lumot</h4>
-                            <div class="fgroup">
-                                <input type="text" placeholder="Kalit so'zni kiriting">
-                                <select name="service_type" id="st">
-                                    <option value="null">Xizmat turini tanlang</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-section">
-                            <h4>Qo'shimcha ma'lumot</h4>
-                            <div class="fgroup">
-                                <select name="service_type" id="st">
-                                    <option value="null">Kunni tanlang</option>
-                                </select>
-                                <select name="service_type" id="st">
-                                    <option value="null">Mutaxasisni tanlang</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-section">
-                            <h4>Umumiy ma'lumot</h4>
-                            <div class="fgroup">
-                                <input type="number" placeholder="Boshlang'ich narx">
-                                <input type="number" placeholder="Maksimal narx">
-                            </div>
-                        </div>
-                        <button class="fbtn" type="reset">Bekor qilish</button>
-                        <button class="fbtn submit" type="submit">Qidirish</button>
-                    </form>
-                </div>
-            </div>
+            
             <div class="home-about-us h-card">
                 <div class="ha-left">
                     <h1>I-DOCTOR.UZ</h1>
@@ -61,10 +26,10 @@
                         <img src="/assets/images/logobig.png" width="200px" alt="">
                     </div>
                     <div class="ha-num-info">
-                        <a href="#" class="num-info">Shifohonalar: <span class="f-l">500 ta</span></a>
-                        <a href="#" class="num-info">Shifokorlar: <span class="f-l">2500 ta</span></a>
-                        <a href="#" class="num-info">Hamkorlar: <span class="f-l">400 ta</span></a>
-                        <a href="#" class="num-info">Postlar: <span class="f-l">4500 ta</span></a>
+                        <a href="#" class="num-info">Shifohonalar: <span class="f-l"><?=$link->query('SELECT * FROM clinic')->rowCount()?> ta</span></a>
+                        <a href="#" class="num-info">Shifokorlar: <span class="f-l"><?=$link->query('SELECT * FROM doctor')->rowCount()?> ta</span></a>
+                        <a href="#" class="num-info">Hamkorlar: <span class="f-l"><?=$link->query('SELECT * FROM clinic')->rowCount()?> ta</span></a>
+                        <a href="#" class="num-info">Postlar: <span class="f-l"><?=$link->query("SELECT * FROM news where type='post'")->rowCount()?> ta</span></a>
                     </div>
                 </div>
             </div>
@@ -462,5 +427,40 @@
         </main>
 
 
-
+<!-- <div class="h-card h-filter">
+                <h3>Kerakli xizmatni oson va tezlik bilan toping</h3>
+                <div class="filter-body">
+                    <form action="#" method="POST">
+                        <div class="form-section">
+                            <h4>Umumiy ma'lumot</h4>
+                            <div class="fgroup">
+                                <input type="text" placeholder="Kalit so'zni kiriting">
+                                <select name="service_type" id="st">
+                                    <option value="null">Xizmat turini tanlang</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4>Qo'shimcha ma'lumot</h4>
+                            <div class="fgroup">
+                                <select name="service_type" id="st">
+                                    <option value="null">Kunni tanlang</option>
+                                </select>
+                                <select name="service_type" id="st">
+                                    <option value="null">Mutaxasisni tanlang</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4>Umumiy ma'lumot</h4>
+                            <div class="fgroup">
+                                <input type="number" placeholder="Boshlang'ich narx">
+                                <input type="number" placeholder="Maksimal narx">
+                            </div>
+                        </div>
+                        <button class="fbtn" type="reset">Bekor qilish</button>
+                        <button class="fbtn submit" type="submit">Qidirish</button>
+                    </form>
+                </div>
+            </div> -->
     </div>
